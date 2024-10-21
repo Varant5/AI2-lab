@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MeasurementData index{% endblock %}
+
+{% block body %}
+    <h1>MeasurementData index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Wind_speed</th>
+                <th>Humidity</th>
+                <th>Pressure</th>
+                <th>Temperature</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for measurement_datum in measurement_datas %}
+            <tr>
+                <td>{{ measurement_datum.id }}</td>
+                <td>{{ measurement_datum.date ? measurement_datum.date|date('Y-m-d') : '' }}</td>
+                <td>{{ measurement_datum.windSpeed }}</td>
+                <td>{{ measurement_datum.humidity }}</td>
+                <td>{{ measurement_datum.pressure }}</td>
+                <td>{{ measurement_datum.temperature }}</td>
+                <td>
+                    <a href="{{ path('app_measurement_data_show', {'id': measurement_datum.id}) }}">show</a>
+                    <a href="{{ path('app_measurement_data_edit', {'id': measurement_datum.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_measurement_data_new') }}">Create new</a>
+{% endblock %}

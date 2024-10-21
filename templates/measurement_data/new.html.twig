@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MeasurementData{% endblock %}
+
+{% block body %}
+    <h1>Create new MeasurementData</h1>
+
+    {{ include('measurement_data/_form.html.twig') }}
+
+    <a href="{{ path('app_measurement_data_index') }}">back to list</a>
+{% endblock %}

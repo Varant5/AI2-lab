@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: LocationRepository::class)]
 class Location
@@ -49,7 +50,6 @@ class Location
     public function setCity(string $city): static
     {
         $this->city = $city;
-
         return $this;
     }
 
@@ -61,7 +61,6 @@ class Location
     public function setCountry(string $country): static
     {
         $this->country = $country;
-
         return $this;
     }
 
@@ -73,7 +72,6 @@ class Location
     public function setLatitude(string $latitude): static
     {
         $this->latitude = $latitude;
-
         return $this;
     }
 
@@ -85,7 +83,6 @@ class Location
     public function setLongitude(string $longitude): static
     {
         $this->longitude = $longitude;
-
         return $this;
     }
 
@@ -117,5 +114,10 @@ class Location
         }
 
         return $this;
+    }
+
+    public function getName(): string
+    {
+        return $this->city . ', ' . $this->country;
     }
 }

@@ -1,0 +1,51 @@
+App\Entity\MeasurementData:
+    properties:
+        location:
+            - NotBlank: 
+                groups: ['new', 'edit']
+        date:
+            - NotBlank: 
+                groups: ['new', 'edit']
+            - Type:
+                type: \DateTimeInterface
+                groups: ['new', 'edit']
+        wind_speed:
+            - NotBlank:
+                groups: ['new', 'edit']
+            - Type:
+                type: numeric
+                groups: ['new', 'edit']
+            - Range:
+                min: 0
+                max: 999
+                groups: ['new', 'edit']
+        humidity:
+            - NotBlank:
+                groups: ['new', 'edit']
+            - Type:
+                type: numeric
+                groups: ['new', 'edit']
+            - Range:
+                min: 0
+                max: 100
+                groups: ['new', 'edit']
+        pressure:
+            - NotBlank:
+                groups: ['new', 'edit']
+            - Type:
+                type: numeric
+                groups: ['new', 'edit']
+            - Range:
+                min: 0
+                max: 9999
+                groups: ['new', 'edit']
+        temperature:
+            - NotBlank:
+                groups: ['new', 'edit']
+            - Type:
+                type: numeric
+                groups: ['new', 'edit']
+            - Range:
+                min: -50
+                max: 100
+                groups: ['new', 'edit']
