@@ -26,10 +26,12 @@
                 <td>{{ measurement_datum.humidity }}</td>
                 <td>{{ measurement_datum.pressure }}</td>
                 <td>{{ measurement_datum.temperature }}</td>
+                {% if is_granted('ROLE_MEASUREMENTDATA_EDIT') and is_granted('ROLE_MEASUREMENTDATA_SHOW') %}
                 <td>
                     <a href="{{ path('app_measurement_data_show', {'id': measurement_datum.id}) }}">show</a>
                     <a href="{{ path('app_measurement_data_edit', {'id': measurement_datum.id}) }}">edit</a>
                 </td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>
@@ -39,5 +41,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_measurement_data_new') }}">Create new</a>
+    {% if is_granted('ROLE_MEASUREMENTDATA_NEW') %}
+        <a href="{{ path('app_measurement_data_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
