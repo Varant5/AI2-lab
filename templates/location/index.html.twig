@@ -5,41 +5,43 @@
 {% block body %}
     <h1>Location index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>City</th>
-                <th>Country</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for location in locations %}
-            <tr>
-                <td>{{ location.id }}</td>
-                <td>{{ location.city }}</td>
-                <td>{{ location.country }}</td>
-                <td>{{ location.latitude }}</td>
-                <td>{{ location.longitude }}</td>
-                {% if is_granted('ROLE_LOCATION_EDIT') and is_granted('ROLE_LOCATION_SHOW') %}
-                <td>
-                        <a href="{{ path('app_location_show', {'id': location.id}) }}">show</a>
-                        <a href="{{ path('app_location_edit', {'id': location.id}) }}">edit</a>
-                </td>
-                {% endif %}
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for location in locations %}
+                <tr>
+                    <td>{{ location.id }}</td>
+                    <td>{{ location.city }}</td>
+                    <td>{{ location.country }}</td>
+                    <td>{{ location.latitude }}</td>
+                    <td>{{ location.longitude }}</td>
+                    {% if is_granted('ROLE_LOCATION_EDIT') and is_granted('ROLE_LOCATION_SHOW') %}
+                        <td>
+                            <a href="{{ path('app_location_show', {'id': location.id}) }}" class="btn btn-info btn-sm">Show</a>
+                            <a href="{{ path('app_location_edit', {'id': location.id}) }}" class="btn btn-primary btn-sm">Edit</a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
     {% if is_granted('ROLE_LOCATION_NEW') %}
-        <a href="{{ path('app_location_new') }}">Create new</a>
+        <a href="{{ path('app_location_new') }}" class="btn btn-success">Create new</a>
     {% endif %}
 {% endblock %}

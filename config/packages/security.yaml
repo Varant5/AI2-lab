@@ -42,9 +42,7 @@ security:
             - ROLE_LOCATION_EDIT
             - ROLE_LOCATION_DELETE
             - ROLE_LOCATION_NEW
-            - ROLE_LOCATION_INDEX
             - ROLE_LOCATION_SHOW
-            - ROLE_MEASUREMENTDATA_INDEX
             - ROLE_MEASUREMENTDATA_NEW
             - ROLE_MEASUREMENTDATA_EDIT
             - ROLE_MEASUREMENTDATA_DELETE
